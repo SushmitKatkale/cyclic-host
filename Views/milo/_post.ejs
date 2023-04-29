@@ -1,0 +1,54 @@
+
+    <div class="post flex flex-col mb-5 bg-gray-300 p-2 rounded-md" id="post-<%= post._id %>">
+        <div class="info flex justify-between border-b border-gray-600 py-1">
+            <div class="flex w-[90%] items-center">
+                <div class="aspect-square rounded-full bg-red-600 w-[10%] mr-5">
+
+                </div>
+                <div class="flex flex-col">
+                    <h1><%= post.postUser.userName %></h1>
+                    <div class="flex">
+                        <h1 class="mr-2"><%= post.postDate %></h1>
+                        <h1 class="mr-2"><%= post.postLocation %></h1>
+                        <h1 class="mr-2"><%= post.postType %></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[10%] flex justify-center items-center">
+                <% if (post.postUser._id.toString() == user._id.toString()) { %>
+                    <a href="/milo/delete-post/?pid=<%= post._id %>">Delete</a>
+                <% } %>
+            </div>
+        </div>
+        <div class="flex flex-col p-2">
+            <p class="w-full mb-2">
+                <%= post.postContent %>
+            </p>
+            <% if (post.postFileExtention == 'image') { %>
+                <img src="<%= post.postFile %>" alt="post image" class="w-full mb-2">
+            <% } %>
+            <% if (post.postFileExtention == 'video') { %>
+                <video src="<%= post.postFile %>" class="w-full mb-2" controls></video>
+            <% } %>
+            <div class="flex justify-between mb-2">
+                <div class="flex">
+                    <a href="#" class="mr-2">like</a>
+                    <a href="#" class="mr-2">share</a>
+                </div>
+                <div>
+                    <a href="#" class="">save</a>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-lg">Comments</h1>
+                <% post.postComments.forEach(element => { %>
+                    <%- include('_comment',{comment: element, post: post}) %>
+                <% }) %>
+                <form action="/milo/add-comment/?pid=<%= post._id %>" method="post" class="flex justify-between">
+                    <input type="text" name="commentContent" placeholder="Add a comment" class="w-[78%] outline-none py-1 px-2 rounded-md" required>
+                    <input type="submit" value="Add" class="w-[20%] bg-blue-800 text-white rounded-md cursor-pointer">
+                </form>
+            </div>
+        </div>
+
+    </div>

@@ -1,0 +1,21 @@
+-------------------------------------------------
+Milo App
+-------------------------------------------------
+
+server.js ==> app.listen on port 8080
+view engine ==> ejs
+database ==> mongodb
+layouts ==> express-ejs-layouts
+design ==> tailwind
+popup ==> flash
+auth ==> passport
+
+
+
+
+-----------------
+Models
+
+post : name, user, content, comments, likes, 
+user: name , email, password, bio, avatar, 
+comment : content, user , post  

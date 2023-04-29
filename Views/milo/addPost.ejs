@@ -1,0 +1,83 @@
+<div class="flex justify-between mb-5">
+    <div>
+        <a href="/milo" class="mr-5">home</a>
+        <a href="/milo/saved" class="mr-5">Saved</a>
+        <a href="/milo/addPost" class="mr-5">Add Post</a>
+        <a href="/milo/messages" class="mr-5">Messages</a>
+        <a href="/milo/games" class="mr-5">Add Post</a>
+    </div>
+    <div>
+        <a href="/user/log-out" class="">Log out</a>
+    </div>
+</div>
+<section class="w-full h-full" id="addP">
+    
+    <div class="w-full flex justify-center">
+        <div class="w-[50%] p-5">
+            <form action="/milo/add-a-post" method="post" enctype="multipart/form-data" id="addPostForm">
+                <div class="flex flex-col mb-5">
+                    <label for="content">Enter a content</label>
+                    <textarea name="postContent" id="content" cols="30" rows="5" class="resize-none outline-none border-b border-black" placeholder="Enter text here"></textarea>
+                </div>
+                <div class="flex flex-col mb-5 w-full">
+                    <input type="file" name="file" id="postFile">
+                    <label for="postFile" id="previewFile" class="hidden w-full aspect-square">
+                        <img src="" alt="" class="w-full h-full hidden" id="previewImg">
+                        <video src="" class="w-full h-full hidden" id="previewVideo"></video>
+                    </label>
+                </div>
+                <div class="flex flex-row mb-5">
+                    <label for="postType" class="mr-5 w-[10%]">Visibility</label>
+                    <select name="postType" id="postType" class="w-full">
+                        <option value="Public">Public</option>
+                        <option value="Friends only">Friends only</option>
+                        <option value="Private">Private</option>
+                    </select>
+                </div>
+                <input type="submit" value="Create a post" class="w-full py-1 text-white bg-blue-900 cursor-pointer">
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    let previewFile = document.getElementById('previewFile');
+    let previewImg = document.getElementById('previewImg');
+    let previewVideo = document.getElementById('previewVideo');
+    let postFile = document.getElementById('postFile');
+
+    postFile.addEventListener('change', () => {
+        
+        const file = postFile.files[0];
+        if(file){
+            const reader = new FileReader();
+            previewFile.classList.remove('hidden');
+            previewFile.classList.add('block');
+            console.log(file.type.substring(0,5));
+            if(file.type.substring(0,5) == 'video'){
+                previewImg.classList.remove('block');
+                previewImg.classList.add('hidden');
+                previewVideo.classList.remove('hidden');
+                previewVideo.classList.add('block');
+                reader.addEventListener('load',() => {
+                    previewVideo.setAttribute('src', reader.result);
+                })
+            }else if(file.type.substring(0,5) == 'image'){
+                previewVideo.classList.remove('block');
+                previewVideo.classList.add('hidden');
+                previewImg.classList.remove('hidden');
+                previewImg.classList.add('block');
+                reader.addEventListener('load',() => {
+                    previewImg.setAttribute('src', reader.result);
+                })
+            }
+            reader.readAsDataURL(file);
+        }else{
+            previewFile.classList.remove('block');
+            previewFile.classList.add('hidden');
+            previewVideo.classList.remove('block');
+            previewVideo.classList.add('hidden');
+            previewImg.classList.remove('block');
+            previewImg.classList.add('hidden');
+        }
+    })
+</script>

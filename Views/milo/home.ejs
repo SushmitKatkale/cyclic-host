@@ -1,0 +1,29 @@
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<section class="w-screen h-screen">
+    <div class="flex justify-between mb-5">
+        <div>
+            <a href="/milo" class="mr-5">home</a>
+            <a href="/milo/saved" class="mr-5">Saved</a>
+            <a href="/milo/addPost" class="mr-5">Add Post</a>
+            <a href="/milo/messages" class="mr-5">Messages</a>
+            <a href="/milo/games" class="mr-5">Add Post</a>
+        </div>
+        <div>
+            <a href="/user/log-out" class="">Log out</a>
+        </div>
+    </div>
+
+    <div class="w-full flex flex-col items-center">
+        <div class="w-[50%]" id="post-container">
+            <% for( let i = 0; i < posts.length; i++ ) { %>
+                <%- include('_post',{post: posts[i]}) %>
+            <% } %>
+        </div>
+    </div>
+</section>
+<script src="./js/post_comment.js"></script>

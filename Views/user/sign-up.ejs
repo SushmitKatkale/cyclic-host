@@ -1,0 +1,22 @@
+<h1 class="text-center mb-5">Sign Up</h1>
+<form action="/user/create-an-account" method="post" class="flex flex-col items-center">
+    <% if (flash.error && flash.error.length > 0) { %>
+        <div class="w-[50%] bg-red-800 mb-5">
+            <h1 class="text-white py-1 text-center"><%= flash.error %></h1>
+        </div>
+    <% } %>
+    <div class="mb-5 w-full flex justify-center">
+        <label for="userName" class="w-[20%]">Enter you name</label>
+        <input type="text" name="userName" id="userName" placeholder="Narendra modi" class="outline-none ml-5 border-b border-b-dark-1 w-[30%]" required>
+    </div>
+    <div class="mb-5 w-full flex justify-center">
+        <label for="userEmail" class="w-[20%]">Enter you email</label>
+        <input type="email" name="userEmail" id="userEmail" placeholder="modi@gmail.com" class="outline-none ml-5 border-b border-b-dark-1 w-[30%]" required>
+    </div>
+    <div class="mb-5 w-full flex justify-center">
+        <label for="userPassword" class="w-[20%]">Enter a password</label>
+        <input type="password" name="userPassword" id="userPassword" placeholder="" class="outline-none ml-5 border-b border-b-dark-1 w-[30%]" required>
+    </div>
+    <input type="submit" value="Create an account" class="w-[50%] bg-blue-900 py-1 text-white cursor-pointer">
+    <h1>Already have account?<a href="/user/sign-in">log-in</a></h1>
+</form>

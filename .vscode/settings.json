@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/39f875fc-8df3-451e-8a21-d69c558497e7/resourceGroups/DefaultResourceGroup-CID/providers/Microsoft.Web/sites/new-milo-app",
+    "appService.deploySubpath": "."
+}
