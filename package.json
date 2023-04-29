@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "tail": "npx tailwindcss -i ./Src/tailwind.css -o ./Assests/css/tailwind.css --watch"
+    "tail": "npx tailwindcss -i ./Src/tailwind.css -o ./Assests/css/tailwind.css --watch",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
