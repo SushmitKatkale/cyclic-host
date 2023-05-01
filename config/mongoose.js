@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/milo_new_db');
+mongoose.connect('mongodb://0.0.0.0:27017/milo_new_db');
 const db = mongoose.connection;
 
 db.on("error", console.error.bind('console','error'));
