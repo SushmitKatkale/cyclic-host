@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://0.0.0.0:27017/milo_new_db');
+mongoose.connect('mongosh "mongodb+srv://cluster0.layc9jh.mongodb.net/myFirstDatabase" --apiVersion 1 --username katkalesushmit');
 const db = mongoose.connection;
 
 db.on("error", console.error.bind('console','error'));
